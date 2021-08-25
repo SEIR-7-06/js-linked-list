@@ -49,6 +49,16 @@ class LinkedList {
         // To prepend a Node to the LinkedList, you will 
         // need to replace the this.head with your new node!
         // Then point the new head's .next at the old head
+        
+        // Your code here!
+        // ...
+
+        // Create a new node w/ the given data
+        const newNode = new Node(data)
+        // Add it to the front of the LinkedList by making it the new head
+        const oldHead = this.head
+        this.head = newNode
+        newNode.next = oldHead
     }
 
     /**
@@ -61,14 +71,19 @@ class LinkedList {
             console.log('Linked List is empty!')
             return;
         }
+
         // 2. "Traverse" through the LinkedList starting @ head
         let current = this.head
+        let str = ''
+
         while(current != null) {
             // 3. console.log out each node's data
-            console.log(current.data)
+            // console.log(current.data)
+            str += current.data + ', '
             current = current.next // traverse
             // console.log("here's the next node: ", current)
         }
+        console.log(str)
     }
 
     /**
@@ -81,14 +96,39 @@ class LinkedList {
         // You will need to have a "current" and a "previous" pointer
         // Research: Google the "two pointer pattern"
 
-        // Step 1. Check to see if your head is null (LinkedList is empty)
-        // Step 1a. If the head is empty.. what do we need to do?
+        // Step 1a. Check to see if your head is null (LinkedList is empty)
+        // Step 1b. Check to see if you're replacing the head (n == 0)
         // Step 2. Traverse through the linked list, keeping current and previous 
         // moving, then set previous' .next to the new node
         // and the newNode's .next to current
 
         // Your code here!
         // ...
+        // Create a new node w/ the given data
+        const newNode = new Node(data)
+        
+        // If you're adding to the head
+        if(n == 0 || this.head == null) {
+            let prev = this.head
+            this.head = newNode
+            this.head.next = prev
+            return
+        }
+
+        // Two pointer pattern
+        let prev = null
+        let current = this.head
+        let count = 0
+
+        while(current != null && count < n) {
+            prev = current
+            current = current.next
+            count++
+        }
+
+        // "Stitch" in the new node between the previous and the current
+        prev.next = newNode
+        newNode.next = current
     }
 
     /**
@@ -102,6 +142,32 @@ class LinkedList {
 
         // Your code here!
         // ...
+        // If empty
+        if(!this.head) {
+            return -1
+        }
+        // If removing head
+        if(n === 0) {
+            let removedNode = this.head
+            this.head = this.head.next
+            return removedNode
+        }
+
+        // Two pointer pattern
+        let prev = null
+        let current = this.head
+        let idx = 0
+
+        while(current.next != null && idx < n) {
+            prev = current
+            current = current.next
+            idx++
+        }
+
+        // Remove references to the node by pointing the previous node
+        // to the node after current
+        prev.next = current.next
+        return current
     }
 }
 
@@ -115,26 +181,3 @@ myLinkedList.append('is')
 myLinkedList.append('SEIR-706')
 // console.log(myLinkedList)
 myLinkedList.print()
-
-
-
-
-
-
-
-
-
-
-
-// let myNewNode = new Node('hello world')
-// console.log(myNewNode)
-// console.log(myNewNode.data)
-// console.log(myNewNode.next)
-
-// let myOtherNode = new Node('foobar!')
-// myNewNode.next = myOtherNode
-// console.log(myNewNode)
-
-// let myThirdNode = new Node('wow!')
-// myOtherNode.next = myThirdNode
-// console.log(myNewNode)
