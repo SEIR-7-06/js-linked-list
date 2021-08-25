@@ -46,7 +46,9 @@ class LinkedList {
      * @param {*} data Any input value
      */
     prepend(data) {
-
+        // To prepend a Node to the LinkedList, you will 
+        // need to replace the this.head with your new node!
+        // Then point the new head's .next at the old head
     }
 
     /**
@@ -72,23 +74,34 @@ class LinkedList {
     /**
      * Insert a new Node w/ the given data at the n-th position
      * of the LinkedList
-     * @param {*} n The arbitrary specified index to insert
+     * @param {*} n The specified index to insert at
      * @param {*} data Any input value
      */
     insertAt(n, data) {
-        // You will need to have a "current" and a "previous"
+        // You will need to have a "current" and a "previous" pointer
+        // Research: Google the "two pointer pattern"
+
         // Step 1. Check to see if your head is null (LinkedList is empty)
+        // Step 1a. If the head is empty.. what do we need to do?
         // Step 2. Traverse through the linked list, keeping current and previous 
-        // moving, then set previous's .next to the new node
+        // moving, then set previous' .next to the new node
         // and the newNode's .next to current
+
+        // Your code here!
+        // ...
     }
 
     /**
-     * Removes a Node at the given index
-     * @param {*} n The arbitrary specified index to remove from
+     * Remove the n-th node in the LinkedList
+     * @param {Number} n The specified index to remove at
+     * @returns {Node|Number} Returns the removed node, or -1 if not found
      */
-    deleteAt(n) {
-        
+    removeAt(n) {
+        // You will need to have a "current" and a "previous" pointer
+        // Research: Google the "two pointer pattern"
+
+        // Your code here!
+        // ...
     }
 }
 
@@ -99,7 +112,7 @@ myLinkedList.append('world')
 myLinkedList.append('my')
 myLinkedList.append('name')
 myLinkedList.append('is')
-myLinkedList.append('henry')
+myLinkedList.append('SEIR-706')
 // console.log(myLinkedList)
 myLinkedList.print()
 
