@@ -52,13 +52,6 @@ class LinkedList {
         
         // Your code here!
         // ...
-
-        // Create a new node w/ the given data
-        const newNode = new Node(data)
-        // Add it to the front of the LinkedList by making it the new head
-        const oldHead = this.head
-        this.head = newNode
-        newNode.next = oldHead
     }
 
     /**
@@ -104,31 +97,6 @@ class LinkedList {
 
         // Your code here!
         // ...
-        // Create a new node w/ the given data
-        const newNode = new Node(data)
-        
-        // If you're adding to the head
-        if(n == 0 || this.head == null) {
-            let prev = this.head
-            this.head = newNode
-            this.head.next = prev
-            return
-        }
-
-        // Two pointer pattern
-        let prev = null
-        let current = this.head
-        let count = 0
-
-        while(current != null && count < n) {
-            prev = current
-            current = current.next
-            count++
-        }
-
-        // "Stitch" in the new node between the previous and the current
-        prev.next = newNode
-        newNode.next = current
     }
 
     /**
@@ -142,32 +110,6 @@ class LinkedList {
 
         // Your code here!
         // ...
-        // If empty
-        if(!this.head) {
-            return -1
-        }
-        // If removing head
-        if(n === 0) {
-            let removedNode = this.head
-            this.head = this.head.next
-            return removedNode
-        }
-
-        // Two pointer pattern
-        let prev = null
-        let current = this.head
-        let idx = 0
-
-        while(current.next != null && idx < n) {
-            prev = current
-            current = current.next
-            idx++
-        }
-
-        // Remove references to the node by pointing the previous node
-        // to the node after current
-        prev.next = current.next
-        return current
     }
 }
 
